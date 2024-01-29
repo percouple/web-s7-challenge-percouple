@@ -29,8 +29,52 @@ describe('Sprint 7 Challenge Learner Tests', () => {
     [5] renders a text that reads "JavaScript is pretty awesome"
     [6] renders a text that includes "javaScript is pretty" (use exact = false)
   */
-  test('you can comment out this test', () => {
-    expect(true).toBe(false)
+  // test('you can comment out this test', () => {
+  //   expect(true).toBe(false)
+  // })
+  describe('TASK 1 - Unit Testing of sum function at the bottom of this module', () => {
+    test('[1] Requires two inputs, throws an error if not', () => {
+      expect(() => sum()).toThrowError('pass valid numbers')
+    })
+    test('[2] Ensure numbers are valid', () => {
+      expect(() => sum(2, 'seven')).toThrowError('pass valid numbers')
+    })
+    test('[3] Test case for integers: 1, 3', () => {
+      expect(sum(1, 3)).toStrictEqual(4)
+    })
+    test('[4] Test case for a string and an integer: "1", 2', () => {
+      expect(sum('1', 2)).toBe(3)
+    })
+    test('[5] Test case for two strings: "10", "3"', () => {
+      expect(() => sum('10', '3').toBe('13'))
+    })
+  })
+
+  describe('Helloworld Component', () => {
+    it('Renders Home component', () => {
+      render(<HelloWorld />)
+      expect(screen.getByText('Home')).toBeVisible()
+    })
+    it('Renders About component', () => {
+      render(<HelloWorld />)
+      expect(screen.getByText('About')).toBeVisible()
+    })
+    it('Renders Blog component', () => {
+      render(<HelloWorld />)
+      expect(screen.getByText('Blog')).toBeVisible()
+    })
+    it('Renders The Truth component', () => {
+      render(<HelloWorld />)
+      expect(screen.getByText('The Truth')).toBeVisible()
+    })
+    it('Renders JavaScript is pretty awesome component', () => {
+      render(<HelloWorld />)
+      expect(screen.getByText('JavaScript is pretty awesome')).toBeVisible()
+    })
+    it('Renders javaScript is pretty , {exact: false}component', () => {
+      render(<HelloWorld />)
+      expect(screen.getByText('javaScript is pretty', {exact: false})).toBeVisible()
+    })
   })
 })
 
